@@ -1,0 +1,55 @@
+name: learn-github-artifacts
+run-name: ${{github.actor}} is learning
+on: [workflow_dispatch]
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+  job-2:
+    name: 70000 plus 21000
+    needs: job-1
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+      run: |
+        expr 70000 + 21000 > job-1.txt
+      - name: Upload result from job-1
+      uses: actions/upload-artifact@v3
+      with:
+        name: job_first
+        path: job-1.txt
+        
+  job-3:
+    name: job-2 multiply 2
+    needs: job-2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download the job_first result
+      uses: actions/download-artifact@v3
+        with:
+          name: job_first
+      - shell: bash
+      run: |
+        firstResult = `cat job-1.txt`
+        expr $firstResult \* 2 > job-2.txt
+      - name: Upload result from job-2
+      uses: actions/upload-artifact@v3
+      with:
+        name: job_second
+        path: job-2.txt
+
+  job-4:
+    name: Echo result
+    needs: job-3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download the second job
+      uses: actions/download-artifact@v3
+        with:
+          name: job_second
+      - name: Print result
+      shell: bash
+      run: |
+        result = `cat job-2.txt`
+        echo Result is: $result
