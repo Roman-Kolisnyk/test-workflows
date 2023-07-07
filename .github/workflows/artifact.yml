@@ -31,7 +31,7 @@ jobs:
           name: job_first
       - shell: bash
         run: |
-          firstResult = `cat job-1.txt`
+          firstResult=`cat job-1.txt`
           expr $firstResult \* 2 > job-2.txt
       - name: Upload result from job-2
         uses: actions/upload-artifact@v3
@@ -51,5 +51,5 @@ jobs:
       - name: Print result
         shell: bash
         run: |
-          result = `cat job-2.txt`
+          result=`cat job-2.txt`
           echo Result is: $result
