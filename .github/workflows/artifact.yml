@@ -21,13 +21,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
   job-2:
-    name: 70000 plus 21000
+    name: plus job
     needs: job-1
     runs-on: ubuntu-latest
     steps:
       - shell: bash
         run: |
-          expr 70000 + 21000 > job-1.txt
+          expr ${{ inputs.firstValue }} + ${{ inputs.secondValue }} > job-1.txt
       - name: Upload result from job-1
         uses: actions/upload-artifact@v3
         with:
@@ -46,7 +46,7 @@ jobs:
       - shell: bash
         run: |
           firstResult=`cat job-1.txt`
-          expr $firstResult \* 2 > job-2.txt
+          expr $firstResult \* ${{ inputs.thirdValue }} > job-2.txt
       - name: Upload result from job-2
         uses: actions/upload-artifact@v3
         with:
