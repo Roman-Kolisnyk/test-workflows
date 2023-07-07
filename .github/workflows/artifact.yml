@@ -1,6 +1,20 @@
 name: learn-github-artifacts
 run-name: ${{github.actor}} is learning
-on: [workflow_dispatch]
+on: 
+  workflow_dispatch:
+    inputs:
+      firstValue:
+        description: 'First Value'
+        required: true
+        type: number
+      secondValue:
+        description: 'Second Value'
+        required: true
+        type: number
+      thirdValue:
+        description: 'Third Value (Multiply)'
+        required: true
+        type: number
 jobs:
   job-1:
     runs-on: ubuntu-latest
