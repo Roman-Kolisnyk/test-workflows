@@ -14,7 +14,9 @@ jobs:
     needs: checkout
     steps:
       - name: List files in .github/scripts directory
-        run: echo "$(ls -al /home/runner/work/test-workflows)"
+        run: |
+          echo `cat first.txt`
+          echo "$(ls -al /home/runner/work/test-workflows)"
       
       - name: run build script
         shell: bash
