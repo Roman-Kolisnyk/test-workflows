@@ -35,5 +35,5 @@ jobs:
       - name: print
         run: |
           result=`cat result.txt`
-          echo result
+          echo $result
     
