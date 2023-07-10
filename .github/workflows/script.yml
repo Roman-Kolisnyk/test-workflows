@@ -3,7 +3,7 @@ run-name: trying scripts
 on: [workflow_dispatch]
 jobs:
   checkout:
-    name: checkot process
+    name: checkout process
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
