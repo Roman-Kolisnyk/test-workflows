@@ -14,7 +14,7 @@ jobs:
     needs: checkout
     steps:
       - name: List files in .github/scripts directory
-        run: ls ${{ github.workspace }}
+        run: echo "$(ls -al ${{ github.workspace }})"
       
       - name: run build script
         shell: bash
