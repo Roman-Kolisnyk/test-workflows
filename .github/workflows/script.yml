@@ -14,7 +14,7 @@ jobs:
     needs: checkout
     steps:
       - name: List files in .github/scripts directory
-        run: ls .github/scripts/
+        run: ls
       
       - name: run build script
         shell: bash
