@@ -16,7 +16,7 @@ jobs:
       - name: run build script
         shell: bash
         run: |
-          ${{ vars.GITHUB_WORKSPACE }}/.github/scripts/script.sh > result.txt 
+          .github/scripts/script.sh > result.txt 
       - name: upload the result
         uses: actions/upload-artifact@v3
         with:
