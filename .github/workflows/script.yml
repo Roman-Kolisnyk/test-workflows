@@ -1,0 +1,38 @@
+name: testing scripts
+run-name: trying scripts
+on: [workflow_dispatch]
+jobs:
+  checkout:
+    name: checkot process
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+  
+  init_script:
+    name: script init
+    runs-on: ubuntu-latest
+    needs: checkout
+    steps:
+      - name: run build script
+        shell: bash
+        run: ../scripts/script.sh > result.txt
+      - name: upload the result
+        uses: actions/upload-artifact@v3
+        with:
+          name: result
+          path: result.txt
+  
+  print_result:
+    name: show result
+    runs-on: ubuntu-latest
+    needs: init_script
+    steps:
+      - name: download the result
+        uses: actions/download-artifact@v3
+        with:
+          name: result
+      - name: print
+        run: |
+          result=`cat result.txt`
+          echo result
+    
