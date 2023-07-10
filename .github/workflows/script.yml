@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: run build script
         shell: bash
-        run: ../scripts/script.sh > result.txt
+        run: ./.github/scripts/script.sh > result.txt
       - name: upload the result
         uses: actions/upload-artifact@v3
         with:
