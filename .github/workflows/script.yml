@@ -6,18 +6,14 @@ jobs:
     name: script init
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: checkout repository
         uses: actions/checkout@v3
-        
-      - name: List files in .github/scripts directory
-        run: |
-          echo `cat first.txt`
-          echo "$(ls -al /home/runner/work/test-workflows)"
       
       - name: run build script
         shell: bash
         run: |
-          ${{ github.workspace }}/.github/scripts/script.sh > result.txt 
+          ./.github/scripts/script.sh > result.txt
+          
       - name: upload the result
         uses: actions/upload-artifact@v3
         with:
