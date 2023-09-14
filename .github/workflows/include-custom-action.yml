@@ -1,0 +1,12 @@
+name: "Test of including custom action"
+
+on: [workflow_dispatch]
+
+jobs:
+
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Run custom Action"
+        uses: ./.github/actions/hello-world-action
+      
