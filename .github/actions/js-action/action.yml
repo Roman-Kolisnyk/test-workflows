@@ -1,10 +1,10 @@
 name: 'Hello World'
-description: 'Greating'
+description: 'Greeting'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  user-name:  # id of input
+    description: 'Who are you'
     required: true
-    default: 'World'
+    default: 'User'
 outputs:
   time: # id of output
     description: 'The time we greeted you'
