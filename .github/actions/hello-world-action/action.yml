@@ -2,10 +2,11 @@ name: "Custom Action"
 
 on: [workflow_dispatch]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Write Hello world"
-        run: |
-          echo "Hello World"
+runs:
+  using: "composite"
+  steps: 
+    - name: Print Hello World
+      shell: bash
+      run: |
+        echo "Hello World!"
+
